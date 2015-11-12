@@ -163,13 +163,11 @@ public class AddressBookServiceTest {
 		// test that it is safe and idempotent
 		//////////////////////////////////////////////////////////////////////
 
-		Response response2 = client.target("http://localhost:8282/contacts/person/3")
+		response = client.target("http://localhost:8282/contacts/person/3")
 				.request(MediaType.APPLICATION_JSON).get();
-		Person newUpdated = response2.readEntity(Person.class);
+		Person newUpdated = response.readEntity(Person.class);
 
 		//safe and idempotent
-		assertEquals(response.getStatus(), response2.getStatus());
-		assertEquals(response.getMediaType(), response2.getMediaType());
 		assertEquals(mariaUpdated.getId(), newUpdated.getId());
 		assertEquals(mariaUpdated.getName(), newUpdated.getName());
 
