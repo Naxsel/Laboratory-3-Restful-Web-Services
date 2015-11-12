@@ -170,7 +170,7 @@ public class AddressBookServiceTest {
 		//safe and idempotent
 		assertEquals(response.getStatus(), response2.getStatus());
 		assertEquals(response.getMediaType(), response2.getMediaType());
-		assertEquals(mariaUpdated.getName(), newUpdated.getId());
+		assertEquals(mariaUpdated.getId(), newUpdated.getId());
 		assertEquals(mariaUpdated.getName(), newUpdated.getName());
 
 	}
